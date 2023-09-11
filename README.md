@@ -1,7 +1,7 @@
 # Grupo 6
 Este es el repositorio del *Grupo 6*, cuyos integrantes son:
 * Integrante 1
-* Integrante 2
+* Jose Manuel Castro
 * Integrante 3
 * **Tutor**: Rodrigo Ramírez
 
