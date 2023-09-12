@@ -3,6 +3,7 @@ Este es el repositorio del *Grupo 6*, cuyos integrantes son:
 * José Campos 202173609-3
 * Jose Manuel Castro 202073550-6
 * Ian Rossi 202004612-3
+* Christian Barrios 202104660-7
 * **Tutor**: Rodrigo Ramírez
 
 ## Wiki
