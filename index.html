@@ -92,7 +92,7 @@
             }
     
             .image-container img {
-                max-width: 90%;
+                max-width: 70%;
                 border: inset 10px;
                 border-radius: 25px;
             }
@@ -139,7 +139,7 @@
                 "Ana" : ["Ecografía abdominal - 1:30 PM", "Examen de la piel (Dermatología) - 2:30 PM"],
                 "Laura" : ["Tomografía computarizada (TAC) - 3:00 PM"],
                 "Pedro" : ["Resonancia magnética (RM) - 4:30 PM"],
-                "Karl" : ["Análisis de orina - 8:30 AM"],
+                "Karl" : ["Análisis de orina - 4:30 AM"],
                 "Andrés" : ["Prueba de glucosa en ayunas - 10:00 AM"],
                 "Valentina" : [],
                 "Alejandro" : ["Mamografía - 3:30 PM", "Análisis de sangre para perfil lipídico - 8:45 AM", "Prueba de función pulmonar (Espirometría) - 11:15 AM","Electroencefalograma (EEG) - 3:15 PM","Ecocardiograma - 9:30 AM","Prueba de función hepática - 1:45 PM"],
@@ -151,13 +151,13 @@
                 if (exam.length > 0) {
                     const notification = document.getElementById("notification");
                     const notificationText = document.getElementById("notificationText");
-                    notificationText.textContent = `El paciente tiene los siguientes exámenes agendados today:\n${exam.join("\n")}\n`;
+                    notificationText.textContent = `El paciente tiene los siguientes exámenes agendados para hoy:\n${exam.join("\n")}\n`;
                     notification.style.display = "block";
                     error.style.display = "none";
                 } else {
                     const error = document.getElementById("error");
                     const errorText = document.getElementById("errorText");
-                    errorText.textContent = "No hay exámenes agendados para today.";
+                    errorText.textContent = "No hay exámenes agendados para hoy.";
                     error.style.display = "block";
                     notification.style.display = "none";
                 }
