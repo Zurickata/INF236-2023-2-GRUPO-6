@@ -14,7 +14,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Corroboración de Citas y Notificación a Técnicos</title>
+        <title>Consulta de Hora</title>
         <style>
             /* Estilos CSS aquí */
             body {
@@ -22,7 +22,7 @@
                 background-color: #f0f8ff; /* Light blue background for the body */
                 margin: 0; /* Remove default body margin */
             }
-    
+            
             .header {
                 text-align: center;
                 background-color: #007BFF; /* Blue background for the hospital name */
@@ -30,7 +30,7 @@
                 padding: 20px;
                 font-size: 24px; /* Larger font size for the hospital name */
             }
-    
+            
             .container {
                 max-width: 600px;
                 margin: 0 auto;
@@ -106,22 +106,22 @@
         <div class="separation"></div>
     
         <div class="container">
-            <h1>Corroboración de Citas y Notificación a Técnicos</h1>
+            <h1>Consulta de Hora para Pacientes</h1>
             
-            <input type="text" class="search-input" id="patientName" placeholder="Nombre del paciente">
+            <input type="text" class="search-input" id="patientName" placeholder="RUT sin puntos">
             <button class="search-button" id="searchButton">Buscar</button>
-    
+            
             <div class="notification" id="notification">
                 <p id="notificationText"></p>
             </div>
-    
+            
             <div class="error" id="error">
                 <p id="errorText"></p>
             </div>
         </div>
-    
+        
         <div class="image-container">
-            <img src="image.png" alt="Centro de Recuperación">
+            <img src="images/consulta.png" alt="Centro de Recuperación">
         </div>
 
     <script>
@@ -130,34 +130,35 @@
 
             // Aquí podrías realizar una consulta al sistema para obtener los horarios de exámenes agendados.
             // Supongamos que los horarios se almacenan en una variable "examSchedules".
-
             // Simulación de resultados
             var examSchedules = dict = {
-                "Sofía" : ["Hemograma completo - 8:00 AM", "Examen de la vista (Oftalmología) - 9:00 AM"],
-                "Juan" : ["Radiografía de tórax - 9:30 AM"],
-                "María" : ["Electrocardiograma (ECG) - 11:00 AM"],
-                "Ana" : ["Ecografía abdominal - 1:30 PM", "Examen de la piel (Dermatología) - 2:30 PM"],
-                "Laura" : ["Tomografía computarizada (TAC) - 3:00 PM"],
-                "Pedro" : ["Resonancia magnética (RM) - 4:30 PM"],
-                "Karl" : ["Análisis de orina - 4:30 AM"],
-                "Andrés" : ["Prueba de glucosa en ayunas - 10:00 AM"],
-                "Valentina" : [],
-                "Alejandro" : ["Mamografía - 3:30 PM", "Análisis de sangre para perfil lipídico - 8:45 AM", "Prueba de función pulmonar (Espirometría) - 11:15 AM","Electroencefalograma (EEG) - 3:15 PM","Ecocardiograma - 9:30 AM","Prueba de función hepática - 1:45 PM"],
+                "20987654-3" : ["Sofía", "Hemograma completo - 8:00 AM", "Examen de la vista (Oftalmología) - 9:00 AM"],
+                "21123456-7" : ["Juan", "Radiografía de tórax - 9:30 AM"],
+                "20876543-2" : ["María", "Electrocardiograma (ECG) - 11:00 AM"],
+                "20765432-1" : ["Ana", "Ecografía abdominal - 1:30 PM", "Examen de la piel (Dermatología) - 2:30 PM"],
+                "20123456-7" : ["Laura", "Tomografía computarizada (TAC) - 3:00 PM"],
+                "21111119-9" : ["Pedro", "Resonancia magnética (RM) - 4:30 PM"],
+                "20987654-3" : ["Karl", "Análisis de orina - 4:30 AM"],
+                "20876543-2" : ["Andrés", "Prueba de glucosa en ayunas - 10:00 AM"],
+                "20765432-1" : ["Valentina", ],
+                "20123456-7" : ["Alejandro", "Mamografía - 3:30 PM", "Análisis de sangre para perfil lipídico - 8:45 AM",
+                    "Prueba de función pulmonar (Espirometría) - 11:15 AM","Electroencefalograma (EEG) - 3:15 PM",
+                    "Ecocardiograma - 9:30 AM","Prueba de función hepática - 1:45 PM"],
             };
 
             const exam = examSchedules[patientName];
 
             if (exam !== undefined) {
-                if (exam.length > 0) {
+                if (exam.length > 1) {
                     const notification = document.getElementById("notification");
                     const notificationText = document.getElementById("notificationText");
-                    notificationText.textContent = `El paciente tiene los siguientes exámenes agendados para hoy:\n${exam.join("\n")}\n`;
+                    notificationText.textContent = `Usted tiene los siguientes exámenes agendados:\n\n${exam.join('\n')}\n`;
                     notification.style.display = "block";
                     error.style.display = "none";
                 } else {
                     const error = document.getElementById("error");
                     const errorText = document.getElementById("errorText");
-                    errorText.textContent = "No hay exámenes agendados para hoy.";
+                    errorText.textContent = "No tiene exámenes agendados.";
                     error.style.display = "block";
                     notification.style.display = "none";
                 }
