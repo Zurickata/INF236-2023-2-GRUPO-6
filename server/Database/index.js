@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const MONGO_URL = "mongodb+srv://Jotsui:Anal1234@bd-proyecto.ykqp2xt.mongodb.net/?retryWrites=true&w=majority"
+const MONGO_URL = "mongodb+srv://Jotsui:Anal@bd-proyecto.jtv2hqi.mongodb.net/?retryWrites=true&w=majority"
 
 const db = async () => {
     try{
