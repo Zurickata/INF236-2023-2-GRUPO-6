@@ -1,7 +1,10 @@
 const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
-const router = require("./Routes/rutas.js")
+const routerProfile = require("./Routes/profile.js")
+const routerPaciente = require("./Routes/paciente.js")
+
+const cookieParser = require("cookie-parser");
 
 const db = require("./Database");
 
@@ -13,7 +16,9 @@ app.set("port", process.env.PORT || 5000);
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(cors());
-app.use("/be", router);
+app.use(cookieParser());
+app.use("/be", routerProfile);
+app.use("/be", routerPaciente);
 
 db();
 

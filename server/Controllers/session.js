@@ -2,17 +2,14 @@ const User = require("../Models/user.js")
 const jwt = require("jsonwebtoken");  
 
 const register = async(req, res) => {
-    const {rut, password} = req.body
+    const {correo, password} = req.body
     try {
       const newUser = new User({
-        rut,
+        correo,
         password,
       });
       const userSaved = await newUser.save();
-
-      res.json({
-        message: "Usuario credo satisfactoriamente",
-      })
+      
       jwt.sign(
       {
         id:userSaved._id,
@@ -41,13 +38,13 @@ const register = async(req, res) => {
 };
 
 const login = async(req, res) => {
-  const {rut, password} = req.body
-  console.log(rut,password)
+  const {correo, password} = req.body
+  console.log(correo,password)
   
   try {
-    const userFound = await User.findOne({rut})
+    const userFound = await User.findOne({correo})
     console.log(userFound.password)
-    if(!userFound) return res.status(400).json({message:" rut no encontrado"})
+    if(!userFound) return res.status(400).json({message:" correo no encontrado"})
 
     const passCorrect =  password == userFound.password
     if(!passCorrect) return res.status(400).json({message:" contrasena incorrecta"})
@@ -88,9 +85,21 @@ const logout = async(req, res) => {
 
 }
 
+const secretaria = async(req , res) => {
+  const userFound = await User.findById(req.user.id)
 
+  if(!userFound) return res.status(400).json({message: "User not found"});
+
+  return res.json({
+    id: userFound._id,
+    correo: userFound.correo,
+  })
+
+
+}
 module.exports = { 
   "login": login,
   "register": register,
-  "logout": logout
+  "logout": logout,
+  "secretaria" : secretaria
 }

@@ -1,11 +1,12 @@
 const mongoose = require("mongoose");
 
 const userSchema = new  mongoose.Schema({
-    rut:{
+    correo:{
         type: String,
         required: true,
         trim: true,
         unique:true,
+        match: [/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/, 'Por favor, introduce un correo electrónico válido']
     },
     password:{
         type: String,
