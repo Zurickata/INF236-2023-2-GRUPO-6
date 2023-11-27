@@ -29,6 +29,21 @@ const buscarHoras = async(req, res) => {
         res.status(500).json({ message: 'Error al buscar usuarios por RUT.' });
       }
 };
+
+const horasDias = async(req, res) => {
+    try {
+    fecha = req.params.fecha
+
+    const horasPaciente = await paciente.find({ fecha  });
+    if (horasPaciente.length > 0) {
+        res.json(horasPaciente); // Enviar la lista de usuarios encontrados como respuesta
+      } else {
+        res.status(404).json({ message: 'No se encontraron usuarios con ese RUT.' });
+      }
+    } catch (error) {
+        res.status(500).json({ message: 'Error al buscar usuarios por RUT.' });
+      }
+};
 const eliminarHora = async(req, res) => {
     const hora = await paciente.findByIdAndDelete(req.params.id)
     if(!hora) return res.status(404).json({message: "tarea no encontrada"})
@@ -48,5 +63,6 @@ module.exports = {
     "asignarHora": asignarHora,
     "buscarHoras": buscarHoras,
     "eliminarHora": eliminarHora,
-    "modificarHoras" : modificarHoras
+    "modificarHoras" : modificarHoras,
+    "horasDias" : horasDias
   }

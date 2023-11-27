@@ -1,0 +1,42 @@
+/* Navbar.css */
+
+.navbar {
+    display: flex; /* Utilizamos flexbox para alinear los elementos */
+    justify-content: flex-end; /* Alineamos los elementos hacia la derecha */
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+  }
+  
+  .navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navbar ul li {
+    display: inline;
+    margin-right: 10px;
+  }
+  
+  .navbar ul li:last-child {
+    margin-right: 0;
+  }
+  
+  .navbar ul li a {
+    text-decoration: none;
+  }
+  
+  .navbar ul li button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .navbar ul li button:hover {
+    background-color: #45a049;
+  }
+  

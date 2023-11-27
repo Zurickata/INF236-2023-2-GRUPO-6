@@ -8,8 +8,6 @@ router.post('/register', sesion.register);
 
 router.post('/login', sesion.login);
 
-router.post('/logout', sesion.logout);
-
 router.get('/secretaria',autenticar, sesion.secretaria);
 
 module.exports = router;

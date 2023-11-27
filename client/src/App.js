@@ -2,9 +2,12 @@
 import React, { useState } from 'react';
 import  {BrowserRouter, Routes, Route} from 'react-router-dom'
 import './App.css';
-import { authProvider } from './context/context';
+import Horas from './pages/horasX.js'
 import Home from './pages/Home';
 import Login from './pages/Login';
+import Logout from './pages/logout';
+import ReservaHoras from './pages/ReservaHoras';
+
 
 function App() {
   const [isLogin, setIsLogin] = useState(false);
@@ -16,10 +19,11 @@ function App() {
     <authProvider>
       <BrowserRouter>
         <Routes>
-          <Route path= '/' element={<h1> home page</h1>}></Route>
+          <Route path= '/' element={<Home></Home>}></Route>
           <Route path= '/login' element={<Login></Login>}></Route>
-          <Route path= '/reservaHoras' element={<h1> reservaHoras</h1>}></Route>
-         <Route path= '/hora/:rut' element={<h1> ver horas</h1>}></Route>
+          <Route path= '/logout' element={<Logout></Logout>}></Route>
+          <Route path= '/reservaHoras' element={<ReservaHoras></ReservaHoras>}></Route>
+         <Route path= '/horasx' element={<Horas></Horas>}></Route>
 
 
         </Routes>

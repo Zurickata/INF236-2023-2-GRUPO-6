@@ -71,15 +71,6 @@ const login = async(req, res) => {
 
 };
 
-const logout = async(req, res) => {
-  
-  res.cookie("token", "",{
-    expires: new Date(0)
-    });
-    return res.sendStatus(200);
-
-
-}
 
 const secretaria = async(req , res) => {
   const userFound = await User.findById(req.user.id)
@@ -96,6 +87,5 @@ const secretaria = async(req , res) => {
 module.exports = { 
   "login": login,
   "register": register,
-  "logout": logout,
   "secretaria" : secretaria
 }
