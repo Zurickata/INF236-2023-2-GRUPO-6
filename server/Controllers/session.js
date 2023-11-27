@@ -43,7 +43,6 @@ const login = async(req, res) => {
   
   try {
     const userFound = await User.findOne({correo})
-    console.log(userFound.password)
     if(!userFound) return res.status(400).json({message:" correo no encontrado"})
 
     const passCorrect =  password == userFound.password
@@ -59,10 +58,7 @@ const login = async(req, res) => {
     },
     (err,token) => {
       if(err) console.log(err)
-      res.cookie('token',token);
-      res.json({
-        message: "Usuario credo satisfactoriamente",
-      })
+      res.json({token})
     }
     )
     
