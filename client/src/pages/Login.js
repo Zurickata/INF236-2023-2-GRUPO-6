@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
+import '../components/Login.css'; // Importamos el archivo de estilos CSS
 
 const API = "http://localhost:5000/be"
 
@@ -13,7 +15,7 @@ const Formulario = () => {
 
     try {
       // Realizar la solicitud al backend usando Axios (o Fetch API)
-       const responses = await axios.post(`${API}/login`, {
+      const responses = await axios.post(`${API}/login`, {
         correo: correo,
         password: password,
       })
@@ -23,7 +25,6 @@ const Formulario = () => {
         localStorage.setItem('token', token)
         console.log('Respuesta exitosa:', token);
         window.location.href = 'http://localhost:3000/';
-        
       })
       .catch(error => {
         // Manejar errores de la solicitud
@@ -47,18 +48,11 @@ const Formulario = () => {
   };
 
   return (
+    <div class="container">
     <form onSubmit={handleSubmit}>
-      <label>
-        password:
-        <input
-          type="String"
-          value={password}
-          onChange={(e) => setpassword(e.target.value)}
-        />
-      </label>
       <br />
       <label>
-        correo:
+        E-Mail:
         <input
           type="email"
           value={correo}
@@ -66,10 +60,21 @@ const Formulario = () => {
         />
       </label>
       <br />
+      <label>
+        Contraseña:
+        <input
+          type="String"
+          value={password}
+          onChange={(e) => setpassword(e.target.value)}
+        />
+      </label>
       <button type="submit">Enviar</button>
       {mostrarMensaje && <p>Contraseña incorrecta</p>}
+      <Link to="/">
+          <button type="button">Volver</button>
+      </Link>
     </form>
-    
+    </div>
   );
 };
 

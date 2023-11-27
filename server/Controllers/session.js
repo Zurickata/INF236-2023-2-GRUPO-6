@@ -22,7 +22,7 @@ const register = async(req, res) => {
         if(err) console.log(err)
         res.cookie('token',token);
         res.json({
-          message: "Usuario credo satisfactoriamente",
+          message: "Usuario creado satisfactoriamente",
         })
       }
       )

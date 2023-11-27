@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const API = "http://localhost:5000/be/hora/"
@@ -15,14 +16,13 @@ const Horas = () => {
         // Realizar la solicitud al backend usando Axios (o Fetch API)
         const aux = API + rut
         console.log(aux)
-         const responses = await axios.get(`${aux}`)
+        const responses = await axios.get(`${aux}`)
         .then(response => {
           // Manejar la respuesta exitosa del backend        
           const lista = response.data
           console.log('Respuesta exitosa:', lista);
           setDatos(lista)
           setMostrarHoras(true);
-          
         })
         .catch(error => {
           // Manejar errores de la solicitud
@@ -43,12 +43,13 @@ const Horas = () => {
         console.error('Error al enviar los datos:', error);
       }
     };
-  
+
     return (
       <body>
+      <div class="container">
       <form onSubmit={handleSubmit}>
         <label>
-          rut:
+          RUT:
           <input
             type="String"
             value={rut}
@@ -59,7 +60,11 @@ const Horas = () => {
 
         <br />
         <button type="submit">Enviar</button>
+        <Link to="/">
+          <button type="button">Volver</button>
+        </Link>
       </form>
+      </div>
       {mostrarHoras && 
     <div>
     <h2>Lista de Datos:</h2>

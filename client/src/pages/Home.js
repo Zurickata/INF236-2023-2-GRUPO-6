@@ -17,23 +17,19 @@ const Navbar = () => {
             <Link to="/horasx">
               <button type="button">Horas x dia</button>
             </Link>
-
-            <Link to="/ReservaHoras">
-              <button type="button">Horas Agendadas</button>
+            <Link to="/">
+              <button type="button">Inicio</button>
             </Link>
-
           </li>
         ) : (
           <li>
             <Link to="/login">
               <button type="button">Iniciar Sesión</button>
             </Link>
-            <Link to="/ReservaHoras">
-              <button type="button">Horas Agendadas</button>
+            <Link to="/">
+              <button type="button">Inicio</button>
             </Link>
           </li>
-          
-          
         )}
         {/* Agrega más elementos de la barra de navegación con botones y enlaces según sea necesario */}
       </ul>
@@ -45,9 +41,14 @@ const HomePage = () => {
   return (
     <div>
       <Navbar />
-      <h2>Bienvenido a la página de inicio</h2>
-      <p>¡Has iniciado sesión correctamente!</p>
-      <p>Por favor, inicia sesión para acceder a esta página.</p>
+      <div class="container">
+      <div class="landing-page">
+        <h1>Sistema digital hospitalario</h1>
+        <Link to="/ReservaHoras">
+          <button type="button">Consulta de horas para pacientes</button>
+        </Link>
+      </div>
+      </div>
     </div>
   );
 };

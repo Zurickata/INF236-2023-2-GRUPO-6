@@ -23,15 +23,11 @@ function App() {
           <Route path= '/login' element={<Login></Login>}></Route>
           <Route path= '/logout' element={<Logout></Logout>}></Route>
           <Route path= '/reservaHoras' element={<ReservaHoras></ReservaHoras>}></Route>
-         <Route path= '/horasx' element={<Horas></Horas>}></Route>
-
-
+          <Route path= '/horasx' element={<Horas></Horas>}></Route>
         </Routes>
       </BrowserRouter>
     </authProvider>
-
   );
-
 }
 
 export default App;
