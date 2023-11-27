@@ -15,8 +15,13 @@ const Navbar = () => {
               <button type="button">Cerrar Sesión</button>
             </Link>
             <Link to="/horasx">
+              <button type="button">Horas x dia</button>
+            </Link>
+
+            <Link to="/ReservaHoras">
               <button type="button">Horas Agendadas</button>
             </Link>
+
           </li>
         ) : (
           <li>
