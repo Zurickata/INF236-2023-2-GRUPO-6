@@ -1,8 +1,41 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import '../components/Navbar.css'; // Importamos el archivo de estilos CSS
 
 const API = "http://localhost:5000/be/horas/"
+
+const Navbar = () => {
+  const token = localStorage.getItem('token');
+  const sesion = token ? true : false; // Verificar si existe el token
+
+  return (
+    <nav className="navbar">
+      <ul>
+        {sesion ? (
+          <li>
+            <Link to="/logout">
+              <button type="button">Cerrar Sesión</button>
+            </Link>
+            <Link to="/">
+              <button type="button">Inicio</button>
+            </Link>
+          </li>
+        ) : (
+          <li>
+            <Link to="/login">
+              <button type="button">Iniciar Sesión</button>
+            </Link>
+            <Link to="/">
+              <button type="button">Inicio</button>
+            </Link>
+          </li>
+        )}
+        {/* Agrega más elementos de la barra de navegación con botones y enlaces según sea necesario */}
+      </ul>
+    </nav>
+  );
+};
 
 const Horas = () => {
     const token = localStorage.getItem('token');
@@ -55,12 +88,15 @@ const Horas = () => {
   
     return (
       <body>
+      <div>
+      <Navbar />
       <div class="container">
       <form onSubmit={handleSubmit}>
         <label>
-          fecha:
+          Ingresar fecha:
           <input
             type="Date"
+            format="dd-mm-yyyy"
             value={fecha}
             onChange={(e) => setfecha(e.target.value)}
           />
@@ -76,9 +112,9 @@ const Horas = () => {
     <ul>
       {datos.map((dato, index) => (
         <li key={index}>
-          <p>Fecha: {dato.fecha}</p>
+          <p>RUT: {dato.rut}</p>
           <p>Teléfono: {dato.telefono}</p>
-          <p>Fecha: {dato.fecha}</p>
+          <p>Fecha: {dato.fecha.split('T')[0]}</p>
           <p>Hora: {dato.hora}</p>
           <p>Correo: {dato.correo}</p>
           <hr />
@@ -86,6 +122,7 @@ const Horas = () => {
       ))}
     </ul>
   </div>}
+  </div>
   </div>
   </body>
       

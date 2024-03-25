@@ -4,6 +4,41 @@ import axios from 'axios';
 
 const API = "http://localhost:5000/be/hora/"
 
+const Navbar = () => {
+  const token = localStorage.getItem('token');
+  const sesion = token ? true : false; // Verificar si existe el token
+
+  return (
+    <nav className="navbar">
+    <ul>
+      {sesion ? (
+      <li>
+          <Link to="/logout">
+          <button type="button">Cerrar Sesión</button>
+          </Link>
+          <Link to="/horasx">
+          <button type="button">Horas por dia</button>
+          </Link>
+          <Link to="/">
+          <button type="button">Inicio</button>
+          </Link>
+      </li>
+      ) : (
+      <li>
+          <Link to="/login">
+          <button type="button">Iniciar Sesión</button>
+          </Link>
+          <Link to="/">
+          <button type="button">Inicio</button>
+          </Link>
+      </li>
+      )}
+      {/* Agrega más elementos de la barra de navegación con botones y enlaces según sea necesario */}
+    </ul>
+    </nav>
+  );
+};
+
 const Horas = () => {
     const [rut, setrut] = useState('');
     const [datos, setDatos] = useState('');
@@ -45,46 +80,44 @@ const Horas = () => {
     };
 
     return (
-      <body>
+    <body>
+      <div>
+      <Navbar />
       <div class="container">
-      <form onSubmit={handleSubmit}>
-        <label>
-          RUT:
-          <input
-            type="String"
-            value={rut}
-            onChange={(e) => setrut(e.target.value)}
-          />
-        </label>
-        <br />
-
-        <br />
-        <button type="submit">Enviar</button>
-        <Link to="/">
-          <button type="button">Volver</button>
-        </Link>
-      </form>
-      </div>
+        <form onSubmit={handleSubmit}>
+          <label>
+            RUT:
+            <input
+              type="String"
+              value={rut}
+              onChange={(e) => setrut(e.target.value)}
+            />
+          </label>
+          <br />
+          <br />
+          <button type="submit">Enviar</button>
+        </form>
+        </div>
       {mostrarHoras && 
-    <div>
-    <h2>Lista de Datos:</h2>
-    <ul>
-      {datos.map((dato, index) => (
-        <li key={index}>
-          <p>rut: {dato.rut}</p>
-          <p>teléfono: {dato.telefono}</p>
-          <p>fecha: {dato.fecha}</p>
-          <p>hora: {dato.hora}</p>
-          <p>correo: {dato.correo}</p>
-          <hr />
-        </li>
-      ))}
-    </ul>
-  </div>
-      
-      }
-
-      </body>
+      <div>
+      <div class="container">
+      <h2>Lista de Datos:</h2>
+      <ul>
+        {datos.map((dato, index) => (
+          <li key={index}>
+            <p>RUT: {dato.rut}</p>
+            <p>Teléfono: {dato.telefono}</p>
+            <p>Fecha: {dato.fecha.split('T')[0]}</p>
+            <p>Hora: {dato.hora}</p>
+            <p>Correo: {dato.correo}</p>
+            <hr />
+          </li>
+        ))}
+      </ul>
+      </div>
+      </div>}
+      </div>
+    </body>
       
     );
   };

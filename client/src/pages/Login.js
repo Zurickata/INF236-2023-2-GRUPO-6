@@ -5,6 +5,33 @@ import '../components/Login.css'; // Importamos el archivo de estilos CSS
 
 const API = "http://localhost:5000/be"
 
+const Navbar = () => {
+  const token = localStorage.getItem('token');
+  const sesion = token ? true : false; // Verificar si existe el token
+
+  return (
+    <nav className="navbar">
+    <ul>
+      {sesion ? (
+      <li>
+          <Link to="/">
+          <button type="button">Inicio</button>
+          </Link>
+      </li>
+      ) : (
+      <li>
+          <Link to="/">
+          <button type="button">Inicio</button>
+          </Link>
+      </li>
+      )}
+      {/* Agrega más elementos de la barra de navegación con botones y enlaces según sea necesario */}
+    </ul>
+    </nav>
+  );
+};
+
+
 const Formulario = () => {
   const [password, setpassword] = useState('');
   const [correo, setcorreo] = useState('');
@@ -48,6 +75,8 @@ const Formulario = () => {
   };
 
   return (
+    <div>
+    <Navbar />
     <div class="container">
     <form onSubmit={handleSubmit}>
       <br />
@@ -74,6 +103,7 @@ const Formulario = () => {
           <button type="button">Volver</button>
       </Link>
     </form>
+    </div>
     </div>
   );
 };

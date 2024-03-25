@@ -15,19 +15,13 @@ const Navbar = () => {
               <button type="button">Cerrar Sesión</button>
             </Link>
             <Link to="/horasx">
-              <button type="button">Horas x dia</button>
-            </Link>
-            <Link to="/">
-              <button type="button">Inicio</button>
+              <button type="button">Horas por dia</button>
             </Link>
           </li>
         ) : (
           <li>
             <Link to="/login">
               <button type="button">Iniciar Sesión</button>
-            </Link>
-            <Link to="/">
-              <button type="button">Inicio</button>
             </Link>
           </li>
         )}
